@@ -5,7 +5,7 @@
    :password :env/clojars_jenkins_password
    :sign-releases false})
 
-(defproject puppetlabs/analytics "1.0.0-SNAPSHOT"
+(defproject puppetlabs/analytics "1.0.0"
   :description "Analytics service for Puppet"
   :url "https://github.com/puppetlabs/analytics"
 
