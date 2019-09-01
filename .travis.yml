@@ -1,8 +1,8 @@
 language: clojure
-lein: 2.7.1
+lein: 2.9.1
 install: ./ext/travisci/install.sh
 jdk:
-  - oraclejdk8
+  - openjdk8
 services:
   - postgresql
 addons:
