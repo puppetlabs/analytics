@@ -1,6 +1,5 @@
 (ns puppetlabs.analytics.test-util
-  (:require [clojure.java.jdbc :as jdbc]
-            [puppetlabs.analytics.service :as svc]
+  (:require [puppetlabs.analytics.service :as svc]
             [puppetlabs.analytics.storage :as storage]
             [puppetlabs.kitchensink.core :as ks]
             [puppetlabs.trapperkeeper.bootstrap :as bootstrap]
@@ -96,23 +95,3 @@
   [config & body]
   `(with-analytics-service* ~config (fn [] ~@body)))
 
-(defn public-tables
-  "Get the names of all public tables in a database"
-  [db]
-  (let [query "SELECT table_name FROM information_schema.tables WHERE LOWER(table_schema) = 'public'"
-        results (jdbc/query db [query])]
-    (map :table_name results)))
-
-(defn drop-public-tables
-  "Drops all public tables in a database. Super dangerous."
-  [db]
-  (if-let [tables (seq (public-tables db))]
-    (jdbc/db-do-commands db (map #(format "DROP TABLE %s CASCADE" %) tables))))
-
-(defn clear-db-fixture
-  "Returns a fixture that drops all tables from a database using the provided
-  database spec. Use reset-db-fixture to have a migrated database."
-  [db-spec]
-  (fn [f]
-    (drop-public-tables db-spec)
-    (f)))

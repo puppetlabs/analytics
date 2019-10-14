@@ -31,8 +31,6 @@
   :profiles {:dev {:source-paths ["dev"]
                    :dependencies [[puppetlabs/trapperkeeper nil :classifier "test" :scope "test"]
                                   [puppetlabs/kitchensink nil :classifier "test" :scope "test"]
-                                  [puppetlabs/dujour "0.3.6"]
-                                  [puppetlabs/dujour "0.3.6" :classifier "test" :scope "test"]
                                   [clj-http "3.0.0"]
                                   [org.clojure/tools.namespace "0.2.11"]
                                   [ring-mock "0.1.5"]]}
