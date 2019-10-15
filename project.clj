@@ -35,6 +35,20 @@
                                        [org.clojure/tools.namespace "0.2.11"]
                                        [ring-mock "0.1.5"]]}
              :dev [:defaults {:dependencies [[org.bouncycastle/bcpkix-jdk15on]]}]
+             :fips [:defaults {:dependencies [[org.bouncycastle/bcpkix-fips]
+                                              [org.bouncycastle/bctls-fips]
+                                              [org.bouncycastle/bc-fips]]
+                               :jvm-opts ~(let [version (System/getProperty "java.version")
+                                                [major minor _] (clojure.string/split version #"\.")
+                                                unsupported-ex (ex-info "Unsupported major Java version. Expects 8 or 11."
+                                                                 {:major major
+                                                                  :minor minor})]
+                                            (condp = (java.lang.Integer/parseInt major)
+                                              1 (if (= 8 (java.lang.Integer/parseInt minor))
+                                                  ["-Djava.security.properties==./dev-resources/java.security.jdk8-fips"]
+                                                  (throw unsupported-ex))
+                                              11 ["-Djava.security.properties==./dev-resources/java.security.jdk11-fips"]
+                                              (throw unsupported-ex)))}]
              :ci {:plugins [[lein-pprint "1.1.2" :exclusions [org.clojure/clojure]]]}}
 
   :repl-options {:init-ns user}
