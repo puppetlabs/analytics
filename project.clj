@@ -28,13 +28,13 @@
   :parent-project {:coords [puppetlabs/clj-parent "4.2.4"]
                    :inherit [:managed-dependencies]}
 
-  :profiles {:dev {:source-paths ["dev"]
-                   :dependencies [[puppetlabs/trapperkeeper :classifier "test" :scope "test"]
-                                  [puppetlabs/kitchensink :classifier "test" :scope "test"]
-                                  [clj-http "3.0.0"]
-                                  [org.bouncycastle/bcpkix-jdk15on]
-                                  [org.clojure/tools.namespace "0.2.11"]
-                                  [ring-mock "0.1.5"]]}
+  :profiles {:defaults {:source-paths ["dev"]
+                        :dependencies [[puppetlabs/trapperkeeper :classifier "test" :scope "test"]
+                                       [puppetlabs/kitchensink :classifier "test" :scope "test"]
+                                       [clj-http "3.0.0"]
+                                       [org.clojure/tools.namespace "0.2.11"]
+                                       [ring-mock "0.1.5"]]}
+             :dev [:defaults {:dependencies [[org.bouncycastle/bcpkix-jdk15on]]}]
              :ci {:plugins [[lein-pprint "1.1.2" :exclusions [org.clojure/clojure]]]}}
 
   :repl-options {:init-ns user}
