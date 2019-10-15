@@ -11,7 +11,7 @@
 
   :pedantic? :abort
 
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure]
                  [org.clojure/tools.logging]
                  [puppetlabs/comidi]
                  [puppetlabs/dujour-version-check]
@@ -25,13 +25,14 @@
                  [puppetlabs/stockpile "0.0.4"]
                  [clj-time]]
 
-  :parent-project {:coords [puppetlabs/clj-parent "0.8.0"]
+  :parent-project {:coords [puppetlabs/clj-parent "4.2.4"]
                    :inherit [:managed-dependencies]}
 
   :profiles {:dev {:source-paths ["dev"]
-                   :dependencies [[puppetlabs/trapperkeeper nil :classifier "test" :scope "test"]
-                                  [puppetlabs/kitchensink nil :classifier "test" :scope "test"]
+                   :dependencies [[puppetlabs/trapperkeeper :classifier "test" :scope "test"]
+                                  [puppetlabs/kitchensink :classifier "test" :scope "test"]
                                   [clj-http "3.0.0"]
+                                  [org.bouncycastle/bcpkix-jdk15on]
                                   [org.clojure/tools.namespace "0.2.11"]
                                   [ring-mock "0.1.5"]]}
              :ci {:plugins [[lein-pprint "1.1.2" :exclusions [org.clojure/clojure]]]}}
@@ -41,7 +42,7 @@
   :aliases {"tk" ["trampoline" "run" "--config" "dev-resources/config.conf"]}
 
   :main puppetlabs.trapperkeeper.main
-  :plugins [[lein-parent "0.3.1"]]
+  :plugins [[lein-parent "0.3.7"]]
 
   :repositories [["releases" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-releases__local/"]
                  ["snapshots" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-snapshots__local/"]]
