@@ -11,7 +11,7 @@
 
   :pedantic? :abort
 
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure]
                  [org.clojure/tools.logging]
                  [puppetlabs/comidi]
                  [puppetlabs/dujour-version-check]
@@ -25,17 +25,30 @@
                  [puppetlabs/stockpile "0.0.4"]
                  [clj-time]]
 
-  :parent-project {:coords [puppetlabs/clj-parent "0.8.0"]
+  :parent-project {:coords [puppetlabs/clj-parent "4.2.4"]
                    :inherit [:managed-dependencies]}
 
-  :profiles {:dev {:source-paths ["dev"]
-                   :dependencies [[puppetlabs/trapperkeeper nil :classifier "test" :scope "test"]
-                                  [puppetlabs/kitchensink nil :classifier "test" :scope "test"]
-                                  [puppetlabs/dujour "0.3.6"]
-                                  [puppetlabs/dujour "0.3.6" :classifier "test" :scope "test"]
-                                  [clj-http "3.0.0"]
-                                  [org.clojure/tools.namespace "0.2.11"]
-                                  [ring-mock "0.1.5"]]}
+  :profiles {:defaults {:source-paths ["dev"]
+                        :dependencies [[puppetlabs/trapperkeeper :classifier "test" :scope "test"]
+                                       [puppetlabs/kitchensink :classifier "test" :scope "test"]
+                                       [clj-http "3.0.0"]
+                                       [org.clojure/tools.namespace "0.2.11"]
+                                       [ring-mock "0.1.5"]]}
+             :dev [:defaults {:dependencies [[org.bouncycastle/bcpkix-jdk15on]]}]
+             :fips [:defaults {:dependencies [[org.bouncycastle/bcpkix-fips]
+                                              [org.bouncycastle/bctls-fips]
+                                              [org.bouncycastle/bc-fips]]
+                               :jvm-opts ~(let [version (System/getProperty "java.version")
+                                                [major minor _] (clojure.string/split version #"\.")
+                                                unsupported-ex (ex-info "Unsupported major Java version. Expects 8 or 11."
+                                                                 {:major major
+                                                                  :minor minor})]
+                                            (condp = (java.lang.Integer/parseInt major)
+                                              1 (if (= 8 (java.lang.Integer/parseInt minor))
+                                                  ["-Djava.security.properties==./dev-resources/java.security.jdk8-fips"]
+                                                  (throw unsupported-ex))
+                                              11 ["-Djava.security.properties==./dev-resources/java.security.jdk11-fips"]
+                                              (throw unsupported-ex)))}]
              :ci {:plugins [[lein-pprint "1.1.2" :exclusions [org.clojure/clojure]]]}}
 
   :repl-options {:init-ns user}
@@ -43,7 +56,7 @@
   :aliases {"tk" ["trampoline" "run" "--config" "dev-resources/config.conf"]}
 
   :main puppetlabs.trapperkeeper.main
-  :plugins [[lein-parent "0.3.1"]]
+  :plugins [[lein-parent "0.3.7"]]
 
   :repositories [["releases" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-releases__local/"]
                  ["snapshots" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-snapshots__local/"]]

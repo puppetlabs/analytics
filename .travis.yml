@@ -2,17 +2,11 @@ language: clojure
 lein: 2.9.1
 jdk:
   - openjdk8
-services:
-  - postgresql
-addons:
-  postgresql: "9.4"
-before_script:
-  - psql -c 'create database dujour_test;' -U postgres
+  - openjdk11
 env:
-  global:
-    - DUJOUR_DBUSER=postgres
-    - DUJOUR_DBPASS=
-script: lein test :all
+  - ADDITIONAL_ARGS='with-profile fips'
+  - ADDITIONAL_ARGS=''
+script: lein $ADDITIONAL_ARGS test :all
 notifications:
   email: false
   hipchat:
