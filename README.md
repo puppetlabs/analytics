@@ -11,7 +11,7 @@ run where Puppet Server runs.
 If you are looking to add analytics to an application that:
 1) runs inside a Puppet install, and
 2) is written in Clojure,
-see the instructions on the README of the [Analytics Client](https://github.com/puppetlabs/analytics/analytics-client).
+see the instructions on the README of the [Analytics Client](https://github.com/puppetlabs/analytics-client).
 
 ## Usage
 
