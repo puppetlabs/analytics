@@ -5,7 +5,7 @@
    :password :env/clojars_jenkins_password
    :sign-releases false})
 
-(defproject puppetlabs/analytics "1.0.2-SNAPSHOT"
+(defproject puppetlabs/analytics "1.1.0-SNAPSHOT"
   :description "Analytics service for Puppet"
   :url "https://github.com/puppetlabs/analytics"
 
@@ -25,7 +25,7 @@
                  [puppetlabs/stockpile "0.0.4"]
                  [clj-time]]
 
-  :parent-project {:coords [puppetlabs/clj-parent "4.2.4"]
+  :parent-project {:coords [puppetlabs/clj-parent "4.9.4"]
                    :inherit [:managed-dependencies]}
 
   :profiles {:defaults {:source-paths ["dev"]
