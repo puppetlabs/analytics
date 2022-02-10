@@ -9,8 +9,3 @@ env:
 script: lein $ADDITIONAL_ARGS test :all
 notifications:
   email: false
-  hipchat:
-    rooms:
-      secure: pTAs5EEU3U2xkFcQYQjiAZCLm0ps5Xi4X7PurvLcrtJjE7R0Rzvg/Ip7xDDBaKMH/uzixdv4YhbBnrgjErPdh3y6msJNZ5XAXC6AIqb2+ffGna1+v2bD6Q0HgKPCwkWxY6MnOk96kKBohCAjBNz9iweW5qoRKdT8FovjTq6AaIYOhSNeFbbzGdOrGSwtja3QOFNs1Qko1Z+oV5gmJ7XZtPqbR9sGbccVX300EYnb7XNRW3poS80EHM881frk0KXy0L0v6Bo4zs3TJiSgUX/DZz4IQvgZYHzjM66J4VDDVV9nZvj5H1MJGmOVESBa+A1LS9VE6DYkG7W3X6w4C+IqxaSgbTcBzWEDDthZiLvRDP2YSbRLB607o1z8CWBhrevps8y9EuZ5Lq4fF0g/BWwm97zmAzF2kh2pABKydoSVZVJ/y2ODYhx+opw0tU3gurSFklGL8T0Sn7o1+DJO/euvdoA1LEIhF9yJuYBfkKRw2vyNVWVNqDk/OhKyhSOFeWluF9RtWhgLHkiXZ/FSlBCMgF8KzYsh+ntJ32qYunltLuYvhxocp5A0Y8qQW0KPK27rcgQx61Sh2bdbkwggEmnwzen9WJ6kczjZ6BgL0qHLMtpn5iLf2Ur/bqBLYldT7Wf9jYiwmZ1qYY3ugzPm62S05ztGuBUvXdU1fa+NdKqQvCk=
-    template:
-      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
