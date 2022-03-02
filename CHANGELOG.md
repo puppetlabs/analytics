@@ -3,22 +3,24 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 ### Changed
-- Add a new arity to `make-widget-async` to provide a different widget shape.
 
-## [0.1.1] - 2017-05-08
-### Changed
-- Documentation on how to make the widgets.
-
-### Removed
-- `make-widget-sync` - we're all async, all the time.
-
+## [1.1.1] - 2022-03-02
 ### Fixed
-- Fixed widget maker to keep working when daylight savings switches over.
+- Switch default update URL from updates.puppetlabs.com to updates.puppet.com
 
-## 0.1.0 - 2017-05-08
+## [1.1.0] - 2022-03-02
+### Changed
+- Updated dependencies and FIPS profile
+
+## [1.0.1] - 2019-10-16
 ### Added
-- Files from the new template.
-- Widget maker public API - `make-widget-sync`.
+- Add FIPS profile
 
-[Unreleased]: https://github.com/your-name/analytics/compare/0.1.1...HEAD
-[0.1.1]: https://github.com/your-name/analytics/compare/0.1.0...0.1.1
+## 1.0.0 - 2019-04-22
+### Added
+- Service for aggregating analytics and uploading to http://updates.puppetlabs.com
+
+[Unreleased]: https://github.com/your-name/analytics/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/puppetlabs/analytics/compare/1.1.0...1.1.1
+[1.1.0]: https://github.com/puppetlabs/analytics/compare/1.0.1...1.1.0
+[1.0.1]: https://github.com/puppetlabs/analytics/compare/1.0.0...1.0.1
