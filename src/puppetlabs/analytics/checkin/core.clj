@@ -66,7 +66,7 @@
   create-checkin-args :- CheckinRequirements
   "Creates the object that is used as input to the checkin method."
   [config :- AnalyticsConfig]
-  (let [telemetry-url (get-in config [:product :update-server-url] "https://updates.puppetlabs.com")
+  (let [telemetry-url (get-in config [:product :update-server-url] "https://updates.puppet.com")
         conf-dir (get-in config [:product :conf-dir] "/etc/puppetlabs")
         analytics-opt-out-path (File. (str conf-dir "/analytics-opt-out"))
         certname (get-in config [:global :hostname])

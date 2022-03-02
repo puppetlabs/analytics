@@ -122,4 +122,4 @@
       (is (= "certname" (get-in args [:certname])))
       (is (= cacert (get-in args [:cacert])))
       (is (= nil (:product-name args)))
-      (is (= "https://updates.puppetlabs.com" (:telemetry-url args)))))
+      (is (= "https://updates.puppet.com" (:telemetry-url args)))))
