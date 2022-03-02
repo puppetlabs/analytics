@@ -56,7 +56,7 @@
   :aliases {"tk" ["trampoline" "run" "--config" "dev-resources/config.conf"]}
 
   :main puppetlabs.trapperkeeper.main
-  :plugins [[lein-parent "0.3.7"]]
+  :plugins [[lein-parent "0.3.8"]]
 
   :repositories [["releases" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-releases__local/"]
                  ["snapshots" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-snapshots__local/"]]
