@@ -25,7 +25,7 @@
                  [puppetlabs/stockpile "0.0.4"]
                  [clj-time]]
 
-  :parent-project {:coords [puppetlabs/clj-parent "4.9.4"]
+  :parent-project {:coords [puppetlabs/clj-parent "7.0.0"]
                    :inherit [:managed-dependencies]}
 
   :profiles {:defaults {:source-paths ["dev"]
@@ -47,7 +47,8 @@
                                               1 (if (= 8 (java.lang.Integer/parseInt minor))
                                                   ["-Djava.security.properties==./dev-resources/java.security.jdk8-fips"]
                                                   (throw unsupported-ex))
-                                              11 ["-Djava.security.properties==./dev-resources/java.security.jdk11-fips"]
+                                              11 ["-Djava.security.properties==./dev-resources/java.security.jdk11-fips"] 
+                                              17 ["-Djava.security.properties==./dev-resources/java.security.jdk17-fips"]
                                               (throw unsupported-ex)))}]
              :ci {:plugins [[lein-pprint "1.1.2" :exclusions [org.clojure/clojure]]]}}
 

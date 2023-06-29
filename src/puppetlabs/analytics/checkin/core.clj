@@ -1,6 +1,5 @@
 (ns puppetlabs.analytics.checkin.core
   (:require [cheshire.core :as json]
-            [clj-yaml.core :as yaml]
             [clojure.java.io :as io]
             [clojure.java.shell :as shell]
             [clojure.set :as set]
