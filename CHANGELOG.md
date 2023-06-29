@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. This change
 ## [Unreleased]
 ### Changed
 
+## [1.1.3] - 2023-06-29
+- update clj-parent, remove unused clj-yaml reference
+
+## [1.1.2]
+- security and code owner changes
+
 ## [1.1.1] - 2022-03-02
 ### Fixed
 - Switch default update URL from updates.puppetlabs.com to updates.puppet.com
