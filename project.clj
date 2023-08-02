@@ -25,7 +25,7 @@
                  [puppetlabs/stockpile "0.0.4"]
                  [clj-time]]
 
-  :parent-project {:coords [puppetlabs/clj-parent "7.0.0"]
+  :parent-project {:coords [puppetlabs/clj-parent "7.1.0"]
                    :inherit [:managed-dependencies]}
 
   :profiles {:defaults {:source-paths ["dev"]
